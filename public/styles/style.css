@@ -65,3 +65,15 @@ footer {
 footer .heart {
   color:#cf2e31;
 }
+
+button.delete {
+  position: absolute;
+  margin-top: .1rem;
+  bottom: .6rem;
+  right: .6rem;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 100px;
+  background: gray;
+  color: rgba(0,0,0,0.18);
+  cursor: pointer;
+}

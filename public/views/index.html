@@ -10,7 +10,7 @@
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/cardsController.js"></script>
-        <script src="scripts/directives/cardDirective.js"></script>
+        <!-- <script src="scripts/directives/cardDirective.js"></script> -->
     </head>
     <body>
       <div class="container">
@@ -23,10 +23,11 @@
         <section id="cards" class="container-fluid" ng-controller="CardsController as cardsController">
           <div class="row">
             <div class="col-sm-6 col-md-6 col-lg-4" ng-repeat="card in cardsController.all" >
-<!--               <div class="card">
-                <h4 class="card-title">{{card.question}}</h4>
-                <h6>Cards Against Assembly</h6>
-              </div> -->
+            <div class="card">
+  <h4 class="card-title">{{card.question}}</h4>
+  <h6>Cards Against Assembly</h6>
+  <button type="button" class='delete' ng-click="cardsController.deleteCard(card)">X</button>
+</div>
               <wdi-card question='{{card.question}}'></wdi-card>
 
          
@@ -35,14 +36,10 @@
      
           <h2 class='pull-left'>Make your own card!</h2>
           <form ng-submit='cardsController.addCard()' method="POST" class="form-horizontal">
-            
-            <div class="form-group col-md-4">
-            <input type="text" name="card.question" placeholder="Question" class="form-control input-md" ng-model='cardsController.newCard.question' required="">
-            </div>
-            
-              <div class="form-group col-md-4">
-                <input type="submit" value="Add Card"  class="btn btn-primary"></input>
-              </div>
+            <input type="text" ng-model="cardsController.newCard.question" placeholder="Question" class="form-control input-md" required="">
+
+            <input type="submit" value="Add Card"  class="btn btn-primary"></input>
+
           </form>
         </section>
 

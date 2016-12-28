@@ -6,6 +6,14 @@ var express 	= require('express'),
 
 	app.use(express.static(__dirname + '/public'));
 
+
+	app.set('views', './views');
+
+	/****************************************/
+	app.get('/', function homepage(req, res){
+		res.sendFile(__dirname + '/public/views/index.html');
+	});
+
 	app.use(bodyParser.urlencoded({extended:true}));
 	app.use(bodyParser.json());
 
@@ -27,13 +35,15 @@ app.get('/api/cards', function card_index(req,res){
 	});
 });
 
-app.post('api/cards', function(req,res){
+app.post('/api/cards', function(req,res){
 	var newCard = new db.Card({
 		question: req.body.question
 	});
 	newCard.save(function(err,album){
-		console('new card', album,'saved');
 	});
+});
+app.delete('/api/cards',function(req, res){
+	console.log(req.params.id)
 });
 
 
